@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'member.dart'; // MemberDetailScreen 파일 import
+import 'member.dart';
 
 class Member {
   final int memberNo;
@@ -116,7 +116,7 @@ class _MemberListScreenState extends State<MemberListScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MemberDetailScreen(memberNo: member.memberNo),
+                          builder: (context) => MemberDetailScreen(memberNo: member.memberNo, memberName: member.memberName),
                         ),
                       );
                     },
