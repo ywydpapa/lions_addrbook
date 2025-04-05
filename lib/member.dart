@@ -54,15 +54,10 @@ class _MemberDetailScreenState extends State<MemberDetailScreen> {
       final decodedResponse = utf8.decode(response.bodyBytes);
       Map<String, dynamic> data = json.decode(decodedResponse);
 
-      print('API Response: $data'); // 디버깅용 출력
-
       if (data.containsKey('memberdtl') && (data['memberdtl'] as List).isNotEmpty) {
         final memberData = data['memberdtl'][0];
         if (memberData.containsKey('mPhotoBase64')) {
-          print('mPhoto Length: ${memberData['mPhotoBase64'].length}');
-          print('mPhoto Data: ${memberData['mPhotoBase64'].substring(0, 50)}...'); // 일부만 출력
         }
-
         return Memberdtl.fromJson(memberData);
       } else {
         throw Exception('No member detail found');
@@ -72,21 +67,15 @@ class _MemberDetailScreenState extends State<MemberDetailScreen> {
     }
   }
 
-  /// Base64 데이터를 정리하고 패딩을 추가하는 함수
   String cleanBase64Data(String base64Data) {
     // 헤더 제거 (예: data:image/jpeg;base64,)
     if (base64Data.contains(',')) {
       base64Data = base64Data.split(',')[1];
     }
-
-    // 유효하지 않은 문자 제거
     base64Data = base64Data.replaceAll(RegExp(r'[^A-Za-z0-9+/=]'), '');
-
-    // 패딩 추가
     return addBase64Padding(base64Data);
   }
 
-  /// Base64 데이터에 패딩을 추가하는 함수
   String addBase64Padding(String base64) {
     while (base64.length % 4 != 0) {
       base64 += '=';
@@ -120,13 +109,13 @@ class _MemberDetailScreenState extends State<MemberDetailScreen> {
                 member.mPhotoBase64 != null && member.mPhotoBase64!.isNotEmpty
                     ? Image.memory(
                   base64Decode(cleanBase64Data(member.mPhotoBase64!)),
-                  height: 200,
+                  height: 280,
                   width: 200,
                   fit: BoxFit.cover,
                 )
                     : Image.asset(
                   'assets/defaultphoto.png',
-                  height: 200,
+                  height: 280,
                   width: 200,
                   fit: BoxFit.cover,
                 ),

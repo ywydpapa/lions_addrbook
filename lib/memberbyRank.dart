@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class SearchScreen extends StatelessWidget {
+class RankmembersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('검색 화면'),
+        title: Text('직책별 회원 목록'),
       ),
       body: Center(
         child: ElevatedButton(
