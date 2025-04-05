@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'clubList.dart';
 import 'searchresult.dart';
-import 'memberbyRank.dart';
+import 'rankMember.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => HomeScreen(),
         '/clubList': (context) => ClubListScreen(),
         '/search': (context) => SearchScreen(),
-        '/rankMembers': (context) => RankmembersScreen(),
+        '/rankMembers': (context) => RankMemberScreen(),
       },
     );
   }
