@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginScreen(),
         '/': (context) => HomeScreen(),
         '/clubList': (context) => ClubListScreen(),
-        '/search': (context) => SearchScreen(),
+        '/search': (context) => MemberSearchScreen(),
         '/rankMembers': (context) => RankMemberScreen(),
         '/clubDocs': (context) => ClubDocsScreen(),
         '/docViewer': (context) => DocViewerScreen(),
@@ -146,7 +146,6 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Club No: ${clubNo ?? "없음"}'), // null 처리
             ElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/clubList');
