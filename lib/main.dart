@@ -173,9 +173,15 @@ class HomeScreen extends StatelessWidget {
                     arguments: clubNo, // 클럽 번호 전달
                   );
                 } else {
+                  // 클럽 번호가 없을 경우 경고 메시지와 로그인 화면으로 리다이렉트
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('클럽 번호가 없습니다.')),
+                    SnackBar(content: Text('로그인세션이 만료되었습니다. 다시 로그인해야 합니다.')),
                   );
+
+                  // 2초 후 로그인 화면으로 이동
+                  Future.delayed(Duration(seconds: 2), () {
+                    Navigator.pushReplacementNamed(context, '/login');
+                  });
                 }
               },
               child: Text('클럽 문서 목록'),
@@ -186,4 +192,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
